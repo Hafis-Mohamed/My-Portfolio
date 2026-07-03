@@ -6,7 +6,7 @@ export const portfolioData = {
     college: "College of Engineering Trivandrum (CET)",
     bio: "I am an MCA student at College of Engineering Trivandrum (CET) passionate about building practical systems, web apps, and mobile solutions. Eager to explore new technologies, learn continuously, and apply creative problem-solving to real-world software engineering challenges.",
     email: "hafismohamedofficial@gmail.com",
-    resumeUrl: "#",
+    resumeUrl: "https://drive.google.com/file/d/1L_CFvGmWoyzA_3uClQAUd7qJQrJDnzQb/view?usp=drivesdk",
     githubUrl: "https://github.com/Hafis-Mohamed",
     linkedinUrl: "https://www.linkedin.com/in/hafis-mohamed-31baa0254/",
   },

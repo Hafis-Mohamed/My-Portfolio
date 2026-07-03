@@ -115,6 +115,8 @@ export default function Hero() {
             </button>
             <a
               href={personal.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-3.5 rounded-xl border border-dashed border-cyan-500/30 hover:border-cyan-400 bg-cyan-950/5 text-cyan-400 hover:text-cyan-300 transition-all font-medium flex items-center gap-2"
             >
               <FileText className="w-4 h-4" />
