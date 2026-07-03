@@ -34,14 +34,6 @@ export default function Skills() {
     },
   };
 
-  const badgeVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 120, damping: 10 },
-    },
-  };
 
   return (
     <section id="skills" className="relative py-24 px-6 overflow-hidden">
@@ -108,16 +100,25 @@ export default function Skills() {
                     </h3>
                   </div>
 
-                  {/* Skills Badges Grid */}
-                  <div className="flex flex-wrap gap-2.5">
+                  {/* Skills Progress List */}
+                  <div className="space-y-4">
                     {group.items.map((skill, skillIdx) => (
-                      <motion.span
-                        key={skillIdx}
-                        variants={badgeVariants}
-                        className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium border border-white/5 bg-white/2 text-slate-300 hover:border-cyan-500/30 hover:bg-cyan-950/20 hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-200 cursor-default"
-                      >
-                        {skill}
-                      </motion.span>
+                      <div key={skillIdx} className="space-y-1.5">
+                        <div className="flex justify-between text-xs font-mono">
+                          <span className="text-slate-300 font-medium">{skill.name}</span>
+                          <span className="text-cyan-400">{skill.level}%</span>
+                        </div>
+                        {/* Progress Bar Container */}
+                        <div className="w-full h-1.5 rounded-full bg-white/5 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: "easeOut", delay: skillIdx * 0.05 }}
+                            className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full"
+                          />
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>

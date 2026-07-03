@@ -39,23 +39,50 @@ export const portfolioData = {
   skills: [
     {
       category: "Languages",
-      items: ["Python", "Java", "JavaScript", "C++", "SQL", "Dart"]
+      items: [
+        { name: "Python", level: 90 },
+        { name: "JavaScript", level: 85 },
+        { name: "SQL", level: 80 },
+        { name: "Java", level: 75 },
+        { name: "Dart", level: 70 },
+        { name: "C++", level: 65 }
+      ]
     },
     {
       category: "Web & App Development",
-      items: ["Next.js", "HTML", "CSS", "Tailwind CSS", "Django", "Flutter"]
+      items: [
+        { name: "Django", level: 90 },
+        { name: "HTML & CSS", level: 90 },
+        { name: "Tailwind CSS", level: 85 },
+        { name: "Flutter", level: 80 },
+        { name: "Next.js", level: 75 }
+      ]
     },
     {
       category: "Backend & Database & Cloud",
-      items: ["Firebase", "MySQL", "SQLite", "REST APIs"]
+      items: [
+        { name: "MySQL", level: 85 },
+        { name: "SQLite", level: 85 },
+        { name: "REST APIs", level: 85 },
+        { name: "Firebase", level: 75 }
+      ]
     },
     {
       category: "Tools",
-      items: ["Git", "GitHub", "VS Code", "Android Studio"]
+      items: [
+        { name: "Git & GitHub", level: 85 },
+        { name: "VS Code", level: 90 },
+        { name: "Android Studio", level: 75 }
+      ]
     },
     {
       category: "Core CS",
-      items: ["Data Structures", "Algorithms", "OOP", "DBMS", "Problem Solving", "Full Stack Development"]
+      items: [
+        { name: "Problem Solving", level: 85 },
+        { name: "OOPs Concepts", level: 85 },
+        { name: "Data Structures", level: 80 },
+        { name: "Algorithms", level: 75 }
+      ]
     }
   ],
   experience: [
