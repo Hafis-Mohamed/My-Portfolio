@@ -212,7 +212,7 @@ export default function Contact() {
                       disabled={status === "sending"}
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="John Doe"
+                      placeholder="Enter your name"
                       className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 transition-all text-sm disabled:opacity-50"
                     />
                   </div>
@@ -230,7 +230,7 @@ export default function Contact() {
                       disabled={status === "sending"}
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="johndoe@example.com"
+                      placeholder="Enter your email"
                       className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 transition-all text-sm disabled:opacity-50"
                     />
                   </div>
