@@ -40,8 +40,8 @@ export const portfolioData = {
     {
       category: "Languages",
       items: [
-        { name: "Python", level: 90 },
-        { name: "JavaScript", level: 85 },
+        { name: "Python", level: 85 },
+        { name: "JavaScript", level: 80 },
         { name: "SQL", level: 80 },
         { name: "Java", level: 75 },
         { name: "Dart", level: 70 },
@@ -51,37 +51,37 @@ export const portfolioData = {
     {
       category: "Web & App Development",
       items: [
-        { name: "Django", level: 90 },
         { name: "HTML & CSS", level: 90 },
-        { name: "Tailwind CSS", level: 85 },
-        { name: "Flutter", level: 80 },
-        { name: "Next.js", level: 75 }
+        { name: "Django", level: 80 },
+        { name: "Tailwind CSS", level: 70 },
+        { name: "Flutter", level: 70 },
+        { name: "Next.js", level: 60 }
       ]
     },
     {
       category: "Backend & Database & Cloud",
       items: [
-        { name: "MySQL", level: 85 },
-        { name: "SQLite", level: 85 },
-        { name: "REST APIs", level: 85 },
-        { name: "Firebase", level: 75 }
+        { name: "MySQL", level: 80 },
+        { name: "SQLite", level: 80 },
+        { name: "Firebase", level: 70 },
+        { name: "REST APIs", level: 60 }
       ]
     },
     {
       category: "Tools",
       items: [
-        { name: "Git & GitHub", level: 85 },
-        { name: "VS Code", level: 90 },
-        { name: "Android Studio", level: 75 }
+        { name: "VS Code", level: 85 },
+        { name: "Git & GitHub", level: 80 },
+        { name: "Android Studio", level: 70 }
       ]
     },
     {
       category: "Core CS",
       items: [
-        { name: "Problem Solving", level: 85 },
-        { name: "OOPs Concepts", level: 85 },
-        { name: "Data Structures", level: 80 },
-        { name: "Algorithms", level: 75 }
+        { name: "Problem Solving", level: 75 },
+        { name: "OOPs Concepts", level: 75 },
+        { name: "Data Structures", level: 75 },
+        { name: "Algorithms", level: 70 }
       ]
     }
   ],

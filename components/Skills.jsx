@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Code2, Terminal, Server, Wrench, Database } from "lucide-react";
 import { portfolioData } from "../data/portfolioData";
@@ -15,6 +16,7 @@ const categoryIconMap = {
 
 export default function Skills() {
   const { skills } = portfolioData;
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const containerVariants = {
     hidden: {},
@@ -85,6 +87,8 @@ export default function Skills() {
               <motion.div
                 key={idx}
                 variants={cardVariants}
+                onMouseEnter={() => setHoveredCard(idx)}
+                onMouseLeave={() => setHoveredCard(null)}
                 className="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden group flex flex-col justify-between"
               >
                 <div className="glow-overlay" />
@@ -112,9 +116,8 @@ export default function Skills() {
                         <div className="w-full h-1.5 rounded-full bg-white/5 overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, ease: "easeOut", delay: skillIdx * 0.05 }}
+                            animate={{ width: hoveredCard === idx ? `${skill.level}%` : 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut", delay: skillIdx * 0.03 }}
                             className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full"
                           />
                         </div>
