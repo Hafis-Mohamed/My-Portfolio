@@ -14,9 +14,39 @@ const categoryIconMap = {
   "Core CS": Database,
 };
 
+function SkillBadge({ name, level }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium border border-white/5 bg-white/2 text-slate-300 hover:border-cyan-500/30 hover:bg-cyan-950/20 hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300 cursor-default flex items-center justify-between gap-3 overflow-hidden min-h-[38px] select-none"
+    >
+      <span>{name}</span>
+      
+      {/* Animated Percentage text */}
+      <span 
+        className={`text-[10px] font-bold text-cyan-400 transition-all duration-300 ${
+          hovered ? "opacity-100 translate-x-0 animate-pulse" : "opacity-0 -translate-x-2 pointer-events-none w-0 overflow-hidden"
+        }`}
+      >
+        {level}%
+      </span>
+
+      {/* Animated bottom progress line */}
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: hovered ? `${level}%` : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyan-400 to-indigo-500"
+      />
+    </motion.div>
+  );
+}
+
 export default function Skills() {
   const { skills } = portfolioData;
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   const containerVariants = {
     hidden: {},
@@ -35,7 +65,6 @@ export default function Skills() {
       transition: { type: "spring", stiffness: 80, damping: 15 },
     },
   };
-
 
   return (
     <section id="skills" className="relative py-24 px-6 overflow-hidden">
@@ -87,8 +116,6 @@ export default function Skills() {
               <motion.div
                 key={idx}
                 variants={cardVariants}
-                onMouseEnter={() => setHoveredCard(idx)}
-                onMouseLeave={() => setHoveredCard(null)}
                 className="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden group flex flex-col justify-between"
               >
                 <div className="glow-overlay" />
@@ -104,24 +131,10 @@ export default function Skills() {
                     </h3>
                   </div>
 
-                  {/* Skills Progress List */}
-                  <div className="space-y-4">
+                  {/* Skills Badges Grid */}
+                  <div className="flex flex-wrap gap-2.5">
                     {group.items.map((skill, skillIdx) => (
-                      <div key={skillIdx} className="space-y-1.5">
-                        <div className="flex justify-between text-xs font-mono">
-                          <span className="text-slate-300 font-medium">{skill.name}</span>
-                          <span className="text-cyan-400">{skill.level}%</span>
-                        </div>
-                        {/* Progress Bar Container */}
-                        <div className="w-full h-1.5 rounded-full bg-white/5 overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: hoveredCard === idx ? `${skill.level}%` : 0 }}
-                            transition={{ duration: 0.6, ease: "easeOut", delay: skillIdx * 0.03 }}
-                            className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full"
-                          />
-                        </div>
-                      </div>
+                      <SkillBadge key={skillIdx} name={skill.name} level={skill.level} />
                     ))}
                   </div>
                 </div>
