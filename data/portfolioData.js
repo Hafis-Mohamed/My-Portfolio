@@ -51,7 +51,8 @@ export const portfolioData = {
     {
       category: "Web & App Development",
       items: [
-        { name: "HTML & CSS", level: 90 },
+        { name: "HTML", level: 90 },
+        { name: "CSS", level: 90 },
         { name: "Django", level: 80 },
         { name: "Tailwind CSS", level: 70 },
         { name: "Flutter", level: 70 },

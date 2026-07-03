@@ -14,21 +14,17 @@ const categoryIconMap = {
   "Core CS": Database,
 };
 
-function SkillBadge({ name, level }) {
-  const [hovered, setHovered] = useState(false);
-
+function SkillBadge({ name, level, showProficiency }) {
   return (
-    <motion.div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="relative px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium border border-white/5 bg-white/2 text-slate-300 hover:border-cyan-500/30 hover:bg-cyan-950/20 hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300 cursor-default flex items-center justify-between gap-3 overflow-hidden min-h-[38px] select-none"
+    <div
+      className="relative px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium border border-white/5 bg-white/2 text-slate-300 group-hover:border-cyan-500/30 group-hover:bg-cyan-950/20 group-hover:text-cyan-400 hover:scale-105 active:scale-95 transition-all duration-300 cursor-default flex items-center justify-between gap-3 overflow-hidden min-h-[38px] select-none"
     >
       <span>{name}</span>
       
       {/* Animated Percentage text */}
       <span 
         className={`text-[10px] font-bold text-cyan-400 transition-all duration-300 ${
-          hovered ? "opacity-100 translate-x-0 animate-pulse" : "opacity-0 -translate-x-2 pointer-events-none w-0 overflow-hidden"
+          showProficiency ? "opacity-100 translate-x-0 animate-pulse" : "opacity-0 -translate-x-2 pointer-events-none w-0 overflow-hidden"
         }`}
       >
         {level}%
@@ -37,16 +33,17 @@ function SkillBadge({ name, level }) {
       {/* Animated bottom progress line */}
       <motion.div
         initial={{ width: 0 }}
-        animate={{ width: hovered ? `${level}%` : 0 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        animate={{ width: showProficiency ? `${level}%` : 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyan-400 to-indigo-500"
       />
-    </motion.div>
+    </div>
   );
 }
 
 export default function Skills() {
   const { skills } = portfolioData;
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const containerVariants = {
     hidden: {},
@@ -116,6 +113,8 @@ export default function Skills() {
               <motion.div
                 key={idx}
                 variants={cardVariants}
+                onMouseEnter={() => setHoveredCard(idx)}
+                onMouseLeave={() => setHoveredCard(null)}
                 className="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden group flex flex-col justify-between"
               >
                 <div className="glow-overlay" />
@@ -134,7 +133,12 @@ export default function Skills() {
                   {/* Skills Badges Grid */}
                   <div className="flex flex-wrap gap-2.5">
                     {group.items.map((skill, skillIdx) => (
-                      <SkillBadge key={skillIdx} name={skill.name} level={skill.level} />
+                      <SkillBadge 
+                        key={skillIdx} 
+                        name={skill.name} 
+                        level={skill.level} 
+                        showProficiency={hoveredCard === idx}
+                      />
                     ))}
                   </div>
                 </div>
