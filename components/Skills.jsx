@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Code2, Terminal, Server, Wrench, Database } from "lucide-react";
+import { Code2, Terminal, Server, Wrench, Database, Brain } from "lucide-react";
 import { portfolioData } from "../data/portfolioData";
 
 // Icon mapping based on category names
@@ -12,6 +12,7 @@ const categoryIconMap = {
   "Backend & Database & Cloud": Server,
   "Tools": Wrench,
   "Core CS": Database,
+  "Soft Skills": Brain,
 };
 
 function SkillBadge({ name, level, showProficiency }) {
@@ -79,7 +80,7 @@ export default function Skills() {
             className="flex items-center gap-2 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-3"
           >
             <Code2 className="w-4 h-4" />
-            <span>Technical Capabilities</span>
+            <span>Skills & Abilities</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
@@ -88,7 +89,7 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight"
           >
-            My Tech Stack
+            Skills & Expertise
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}

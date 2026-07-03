@@ -79,10 +79,20 @@ export const portfolioData = {
     {
       category: "Core CS",
       items: [
-        { name: "Problem Solving", level: 75 },
+        { name: "DBMS", level: 75 },
         { name: "OOPs Concepts", level: 75 },
         { name: "Data Structures", level: 75 },
         { name: "Algorithms", level: 70 }
+      ]
+    },
+    {
+      category: "Soft Skills",
+      items: [
+        { name: "Team Collaboration", level: 85 },
+        { name: "Communication Skills", level: 80 },
+        { name: "Analytical Thinking", level: 80 },
+        { name: "Problem Solving", level: 75 },
+        { name: "Decision Making", level: 75 }
       ]
     }
   ],
