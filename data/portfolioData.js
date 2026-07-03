@@ -9,7 +9,7 @@ export const portfolioData = {
     resumeUrl: "#",
     githubUrl: "https://github.com/Hafis-Mohamed",
     linkedinUrl: "https://www.linkedin.com/in/hafis-mohamed-31baa0254/",
-    web3formsKey: "", // Optional: Get a free key from https://web3forms.com/ to send emails silently!
+    web3formsKey: "597ed278-42ea-402b-bd2c-8ace958c7a0a", // Optional: Get a free key from https://web3forms.com/ to send emails silently!
   },
   about: {
     title: "About Me",
