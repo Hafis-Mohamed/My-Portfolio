@@ -7,28 +7,31 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full relative bg-[#030014] z-10 px-6 py-12">
-      {/* Top Gradient Border Line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+    <footer className="w-full relative z-10 px-6 py-12">
+      <div className="aurora-rule mb-10" />
 
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Name and Copy */}
-        <div className="text-center md:text-left">
-          <h4 className="text-base font-display font-bold text-white tracking-wide">
-            {personal.name}
-          </h4>
-          <p className="text-xs text-slate-500 mt-1">
-            &copy; {currentYear} All rights reserved. Crafted with Next.js & Tailwind CSS.
-          </p>
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-3 text-center md:text-left">
+          <span className="grid place-items-center w-9 h-9 rounded-lg font-display font-bold text-sm text-white bg-gradient-to-br from-indigo-500 to-fuchsia-500">
+            HM
+          </span>
+          <div>
+            <h4 className="font-display font-semibold text-white tracking-tight">
+              {personal.name}
+            </h4>
+            <p className="text-xs text-slate-500 mt-0.5">
+              &copy; {currentYear} — Built with Next.js &amp; Tailwind CSS.
+            </p>
+          </div>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex items-center gap-5 text-slate-500">
+        <div className="flex items-center gap-3 text-slate-400">
           <a
             href={personal.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            aria-label="GitHub"
+            className="p-2.5 rounded-lg surface hover:text-white hover:border-white/15 transition-all"
           >
             <GithubIcon className="w-5 h-5" />
           </a>
@@ -36,11 +39,16 @@ export default function Footer() {
             href={personal.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            aria-label="LinkedIn"
+            className="p-2.5 rounded-lg surface hover:text-white hover:border-white/15 transition-all"
           >
             <LinkedinIcon className="w-5 h-5" />
           </a>
-          <a href={`mailto:${personal.email}`} className="hover:text-white transition-colors">
+          <a
+            href={`mailto:${personal.email}`}
+            aria-label="Email"
+            className="p-2.5 rounded-lg surface hover:text-white hover:border-white/15 transition-all"
+          >
             <Mail className="w-5 h-5" />
           </a>
         </div>

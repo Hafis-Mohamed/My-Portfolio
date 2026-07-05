@@ -1,23 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Calendar, BookOpen, MapPin } from "lucide-react";
+import { GraduationCap, Award, Calendar, MapPin } from "lucide-react";
 import { portfolioData } from "../data/portfolioData";
+import SectionHeading from "./SectionHeading";
+
+function handleMove(e) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty("--x", `${e.clientX - r.left}px`);
+  e.currentTarget.style.setProperty("--y", `${e.clientY - r.top}px`);
+}
 
 export default function Education() {
   const { education } = portfolioData;
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 30, opacity: 0 },
+  const container = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
+  const card = {
+    hidden: { y: 28, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -27,99 +26,74 @@ export default function Education() {
 
   return (
     <section id="education" className="relative py-24 px-6 overflow-hidden">
-      {/* Background glow decoration */}
-      <div className="absolute bottom-1/4 left-0 w-[350px] h-[350px] rounded-full bg-cyan-500/5 blur-[120px] pointer-events-none" />
-
       <div className="max-w-6xl mx-auto z-10 relative">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-3"
-          >
-            <GraduationCap className="w-4 h-4" />
-            <span>Learning Milestones</span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight"
-          >
-            Education & Certifications
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full mt-4"
-          />
-        </div>
+        <SectionHeading
+          index="05"
+          eyebrow="Foundations"
+          title="Education & Certifications"
+        />
 
-        {/* Education and Certification Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
         >
-          {/* Loop Education Data */}
-          {education.map((item, idx) => (
-            <motion.div
-              key={idx}
-              variants={cardVariants}
-              className="glass-card glass-card-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between"
-            >
-              <div className="glow-overlay" />
+          {education.map((item, idx) => {
+            const isCert = item.degree.includes("Certificate");
+            return (
+              <motion.div
+                key={idx}
+                variants={card}
+                onMouseMove={handleMove}
+                className="gradient-border gradient-border-hover p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between group"
+              >
+                <div className="glow-overlay" />
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-10 h-10 rounded-lg grid place-items-center text-indigo-300 bg-indigo-500/10 border border-indigo-400/20 group-hover:scale-105 transition-transform">
+                      {isCert ? (
+                        <Award className="w-5 h-5" />
+                      ) : (
+                        <GraduationCap className="w-5 h-5" />
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1.5 text-slate-400 text-xs font-mono">
+                      <Calendar className="w-3.5 h-3.5 text-indigo-400" />
+                      {item.duration}
+                    </div>
+                  </div>
 
-              <div>
-                {/* Header Row */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-950/20 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                    {item.degree.includes("Certificate") ? <Award className="w-5 h-5" /> : <GraduationCap className="w-5 h-5" />}
-                  </div>
-                  <div className="flex items-center gap-1.5 text-slate-400 text-xs font-mono font-medium">
-                    <Calendar className="w-3.5 h-3.5 text-cyan-500" />
-                    <span>{item.duration}</span>
-                  </div>
+                  <h3 className="font-display text-lg font-bold text-white mb-1.5 leading-snug">
+                    {item.degree}
+                  </h3>
+                  <h4 className="text-sm font-medium text-slate-300 mb-4 flex items-start gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-fuchsia-300 shrink-0 mt-0.5" />
+                    {item.institution}
+                  </h4>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-5">
+                    {item.details}
+                  </p>
                 </div>
 
-                {/* Institution & Degree */}
-                <h3 className="text-lg font-display font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
-                  {item.degree}
-                </h3>
-                <h4 className="text-sm font-semibold text-slate-300 mb-4 flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>{item.institution}</span>
-                </h4>
-
-                <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                  {item.details}
-                </p>
-              </div>
-
-              {/* Status Badge */}
-              <div className="mt-4">
                 <span
-                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium font-mono border ${
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono border w-fit ${
                     item.status === "Ongoing"
-                      ? "border-amber-500/20 bg-amber-950/20 text-amber-400"
-                      : "border-emerald-500/20 bg-emerald-950/20 text-emerald-400"
+                      ? "border-amber-400/25 bg-amber-500/10 text-amber-300"
+                      : "border-emerald-400/25 bg-emerald-500/10 text-emerald-300"
                   }`}
                 >
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      item.status === "Ongoing" ? "bg-amber-400" : "bg-emerald-400"
+                    }`}
+                  />
                   {item.status}
                 </span>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* Real data covers all cards */}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
