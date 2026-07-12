@@ -148,6 +148,20 @@ export const portfolioData = {
       duration: "2023",
       status: "Completed",
       details: "Comprehensive hands-on training covering Django framework architecture, custom admin panel integrations, user authentication protocols, and database schema migrations."
+    },
+    {
+      degree: "Higher Secondary (12th)",
+      institution: "GHSS Karupadanna, Thrissur",
+      duration: "March 2022",
+      status: "Completed",
+      details: "Kerala Syllabus. Secured 92.5% with 4 A+ and 2 A grades."
+    },
+    {
+      degree: "SSLC (10th)",
+      institution: "St. Antonys HSS Mala, Thrissur",
+      duration: "March 2020",
+      status: "Completed",
+      details: "Kerala State Board. Secured 90% with 9 A+ and 1 A grades."
     }
   ],
   githubProfile: {
