@@ -65,7 +65,7 @@ export default function Hero() {
             variants={item}
             className="font-display text-5xl md:text-7xl font-bold tracking-tight leading-[1.02] mb-5"
           >
-            <span className="text-soft-white">Hafis</span>{" "}
+            <span className="text-aurora-animate">Hafis</span>{" "}
             <span className="text-aurora-animate">Mohamed</span>
           </motion.h1>
 
