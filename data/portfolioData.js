@@ -41,11 +41,10 @@ export const portfolioData = {
       category: "Languages",
       items: [
         { name: "Python", level: 85 },
-        { name: "JavaScript", level: 80 },
         { name: "SQL", level: 80 },
         { name: "Java", level: 75 },
-        { name: "Dart", level: 70 },
-        { name: "C++", level: 65 }
+        { name: "JavaScript", level: 68 },
+        { name: "Dart", level: 65 }
       ]
     },
     {
@@ -55,7 +54,7 @@ export const portfolioData = {
         { name: "CSS", level: 90 },
         { name: "Django", level: 80 },
         { name: "Tailwind CSS", level: 70 },
-        { name: "Flutter", level: 70 },
+        { name: "Flutter", level: 68 },
         { name: "Next.js", level: 60 }
       ]
     },
